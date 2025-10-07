@@ -25,17 +25,22 @@ jobs:
     - name: Install Ant
       run: sudo apt-get update && sudo apt-get install -y ant
       
+    - name: Set up Android project
+      run: |
+        echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
+        android update project --path . --target android-28
+      
     - name: Build with Ant
       run: ant debug
       
     - name: Create output directory
-      run: mkdir -p app/build/outputs/apk/debug
+      run: mkdir -p bin
       
     - name: Copy APK to output directory
-      run: cp bin/DRRRBotAndroidApp-debug.apk app/build/outputs/apk/debug/ || echo "APK not found"
+      run: cp bin/DRRRBotAndroidApp-debug.apk bin/ || echo "APK not found"
       
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
-        path: app/build/outputs/apk/debug/DRRRBotAndroidApp-debug.apk
+        path: bin/DRRRBotAndroidApp-debug.apk
