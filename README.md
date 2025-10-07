@@ -178,6 +178,11 @@ The bot follows a modular architecture with clearly separated concerns:
 4. **AI Functionality Issues**: Verify third-party API service availability and configuration
 5. **DRRR Connection Issues**: Verify DRRR website availability and cookie settings
 
+### General Support
+Some features may have bugs or issues, or may not work at all. If you encounter such problems:
+1. First, check your environment and configuration files
+2. If problems persist, please contact: ZX114516@outlook.com
+
 ### Logs
 Application logs can be viewed using Android Debug Bridge (ADB):
 ```bash
