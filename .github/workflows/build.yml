@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
         
     - name: Set up Android SDK
-      uses: malinskiy/action-android/setup-sdk@release/0.1.4
+      uses: android-actions/setup-android@v3
       
     - name: Install Ant
       run: sudo apt-get update && sudo apt-get install -y ant
