@@ -30,9 +30,6 @@ jobs:
     - name: Build with Gradle
       run: |
         cd android
-        # Make gradlew executable
-        chmod +x gradlew
-        
         # Build debug APK
         ./gradlew assembleDebug --stacktrace
         
