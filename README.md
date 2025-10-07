@@ -110,17 +110,23 @@ DRRR-BOT/
 
 4. The built APK will be located at `bin/DRRR-BOT-debug.apk`
 
-#### GitHub Actions
-This repository uses GitHub Actions for automated building. Every push to the main branch triggers a build workflow that:
-1. Sets up the required environment (JDK 17, Android SDK)
-2. Builds the APK using Gradle (preferred) or Ant
-3. Uploads the built APK as an artifact
+#### GitHub Actions (当前存在问题)
+由于GitHub Actions环境的兼容性问题，自动构建目前无法正常工作。我们正在努力解决此问题。
 
-There are two build workflows available:
-1. `build.yml` - Uses Ant build system
-2. `build-gradle.yml` - Uses Gradle build system (recommended)
+#### 手动构建APK
+由于自动化构建存在问题，您可以按照以下步骤在本地手动构建APK文件：
 
-The Gradle build process may take several minutes to complete. If the build fails, check the GitHub Actions logs for detailed error information.
+1. 克隆此仓库到本地
+2. 安装必要的开发工具（JDK、Android SDK、Gradle）
+3. 按照[BUILD_INSTRUCTIONS.md](BUILD_INSTRUCTIONS.md)文件中的说明进行操作
+
+#### 构建状态
+我们提供了三种不同的构建工作流，但目前都存在构建失败的问题：
+1. `build.yml` - 使用Ant构建系统
+2. `build-gradle.yml` - 使用Gradle构建系统（推荐）
+3. `build-simple.yml` - 为简化项目使用Gradle构建系统
+
+我们正在积极寻找解决方案以恢复自动构建功能。
 
 ### Usage
 
