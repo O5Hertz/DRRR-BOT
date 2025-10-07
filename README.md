@@ -4,7 +4,10 @@
 
 The DRRR Chat Room Bot is an advanced Android application designed for the DRRR (Dollars Chat Room) platform. This bot provides automated chat responses, room management features, and event handling to enhance the chat room experience.
 
-**Note**: The music playback functionality is currently non-functional and has been deprecated. Please refer to the Features section for details.
+**Note**: 
+1. The music playback functionality is currently non-functional and has been deprecated. Please refer to the Features section for details.
+2. The AI functionality uses a third-party API service, not an official API. Please refer to the Features section for details.
+3. The bot interacts with the DRRR chat room through web scraping techniques, not an official API. Please refer to the Features section for details.
 
 ## Features
 
@@ -18,6 +21,24 @@ The DRRR Chat Room Bot is an advanced Android application designed for the DRRR 
 - **Access Control**: Admin-only command execution
 - **Whitelist/Blacklist**: Fine-grained user access control
 - **Room Settings**: Configurable room parameters
+
+### AI Functionality
+**IMPORTANT**: The AI functionality uses a third-party API service from an external website, not an official API. This feature:
+- Relies on external API services for generating responses
+- May have usage limitations or costs associated with the third-party service
+- Is subject to the terms of service of the third-party API provider
+- May experience downtime or performance issues based on the third-party service
+
+Users should be aware that this functionality depends on external services and may not always be available or consistent.
+
+### DRRR Chat Room Interaction
+**IMPORTANT**: The bot interacts with the DRRR chat room through web scraping techniques, not an official API. This approach:
+- May be affected by changes to the DRRR website structure
+- Could potentially violate the terms of service of the DRRR chat room
+- May experience connectivity issues or blocking by the DRRR server
+- Requires maintaining session cookies and mimicking browser behavior
+
+Users should be aware of these limitations and potential risks when using this bot.
 
 ### Music System (DEPRECATED)
 **IMPORTANT**: The music playback system is currently non-functional and has been deprecated. The following features are not working:
@@ -101,7 +122,7 @@ This repository uses GitHub Actions for automated building. Every push to the ma
 ### Command Reference
 
 #### Administrative Commands (Admin-only)
-- `/ai [on|off]` - Enable/disable AI functionality
+- `/ai [on|off]` - Enable/disable AI functionality (uses third-party API)
 - `/hang [on|off]` - Enable/disable room hanging
 - `/kick <username>` - Kick a user from the room
 - `/ban <username>` - Ban a user from the room
@@ -154,6 +175,8 @@ The bot follows a modular architecture with clearly separated concerns:
 1. **Build Failures**: Ensure the Android SDK path is correctly set in `local.properties`
 2. **Connection Issues**: Verify network connectivity and server availability
 3. **Command Errors**: Check that the user has appropriate permissions
+4. **AI Functionality Issues**: Verify third-party API service availability and configuration
+5. **DRRR Connection Issues**: Verify DRRR website availability and cookie settings
 
 ### Logs
 Application logs can be viewed using Android Debug Bridge (ADB):
@@ -168,3 +191,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - DRRR chat room community
 - Android development community
 - Open source libraries and tools
+- Third-party API providers
