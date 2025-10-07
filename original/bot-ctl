@@ -1,0 +1,46 @@
+#!/bin/bash
+# DRRR Bot 快捷命令脚本
+
+BOT_DIR="/storage/emulated/0/壹号工作区/drrr_bot_standalone"
+
+case "$1" in
+    start)
+        echo "正在启动DRRR Bot完整系统..."
+        cd $BOT_DIR && python3 unified_launcher.py
+        ;;
+    stop)
+        echo "正在停止DRRR Bot完整系统..."
+        cd $BOT_DIR && python3 unified_launcher.py stop
+        ;;
+    restart)
+        echo "正在重启DRRR Bot完整系统..."
+        cd $BOT_DIR && python3 unified_launcher.py stop
+        sleep 3
+        cd $BOT_DIR && python3 unified_launcher.py
+        ;;
+    status)
+        echo "DRRR Bot系统状态:"
+        echo "=================="
+        ps aux | grep -E "(enhanced_ai_bot|enhanced_monitor|matrix_node)" | grep -v grep
+        ;;
+    logs)
+        echo "查看Bot日志:"
+        echo "============"
+        cd $BOT_DIR && tail -20 bot.log
+        ;;
+    matrix-logs)
+        echo "查看矩阵日志:"
+        echo "============="
+        cd $BOT_DIR && bash matrix_manager.sh logs
+        ;;
+    *)
+        echo "用法: bot-ctl {start|stop|restart|status|logs|matrix-logs}"
+        echo ""
+        echo "  start       启动完整系统"
+        echo "  stop        停止完整系统"
+        echo "  restart     重启完整系统"
+        echo "  status      查看系统状态"
+        echo "  logs        查看Bot日志"
+        echo "  matrix-logs 查看矩阵日志"
+        ;;
+esac

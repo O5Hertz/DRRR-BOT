@@ -1,0 +1,21 @@
+{
+  "bot_dir": "/storage/emulated/0/壹号工作区/drrr_bot_standalone",
+  "bot_script": "enhanced_ai_bot.py",
+  "nodes": [
+    {
+      "id": "A",
+      "heartbeat_file": "node_A_heartbeat.json"
+    },
+    {
+      "id": "B",
+      "heartbeat_file": "node_B_heartbeat.json"
+    },
+    {
+      "id": "C",
+      "heartbeat_file": "node_C_heartbeat.json"
+    }
+  ],
+  "heartbeat_interval": 60,
+  "check_interval": 120,
+  "restart_cooldown": 600
+}

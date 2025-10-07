@@ -1,0 +1,16 @@
+[Unit]
+Description=DRRR Bot Monitor Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/storage/emulated/0/壹号工作区/drrr_bot_standalone
+ExecStart=/storage/emulated/0/壹号工作区/drrr_bot_standalone/enhanced_monitor.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
