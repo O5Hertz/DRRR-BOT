@@ -4,6 +4,8 @@
 
 The DRRR Chat Room Bot is an advanced Android application designed for the DRRR (Dollars Chat Room) platform. This bot provides automated chat responses, room management features, and event handling to enhance the chat room experience.
 
+**IMPORTANT NOTICE**: This Android version is still in intensive testing phase as of 2025.10.7. No functionality is guaranteed to be fully operational or stable.
+
 **Note**: 
 1. The music playback functionality is currently non-functional and has been deprecated. Please refer to the Features section for details.
 2. The AI functionality uses a third-party API service, not an official API. Please refer to the Features section for details.
