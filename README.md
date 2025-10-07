@@ -2,13 +2,14 @@
 
 ## Overview
 
-The DRRR Chat Room Bot is an advanced Android application designed for the DRRR (Dollars Chat Room) platform. This bot provides automated chat responses, music playback capabilities, room management features, and event handling to enhance the chat room experience.
+The DRRR Chat Room Bot is an advanced Android application designed for the DRRR (Dollars Chat Room) platform. This bot provides automated chat responses, room management features, and event handling to enhance the chat room experience.
+
+**Note**: The music playback functionality is currently non-functional and has been deprecated. Please refer to the Features section for details.
 
 ## Features
 
 ### Core Functionality
 - **Automated Chat Responses**: Intelligent bot responses to user messages
-- **Music Playback System**: Integrated music player with playlist management
 - **Room Management**: Comprehensive tools for room administration
 - **Event Handling**: Real-time event processing and response
 
@@ -18,11 +19,14 @@ The DRRR Chat Room Bot is an advanced Android application designed for the DRRR 
 - **Whitelist/Blacklist**: Fine-grained user access control
 - **Room Settings**: Configurable room parameters
 
-### Music System
-- **Playlist Management**: Add, remove, and organize songs
-- **Multiple Music Sources**: Support for various music platforms
-- **Text-to-Speech**: Convert text messages to audio
-- **Playback Controls**: Play, pause, next, and clear functions
+### Music System (DEPRECATED)
+**IMPORTANT**: The music playback system is currently non-functional and has been deprecated. The following features are not working:
+- Playlist Management
+- Multiple Music Sources
+- Text-to-Speech
+- Playback Controls
+
+This functionality was part of the original design but is no longer maintained or operational. Users should not expect these commands to work.
 
 ## Architecture
 
@@ -30,9 +34,8 @@ The DRRR Chat Room Bot is an advanced Android application designed for the DRRR 
 1. **DRRRBotCore**: Main bot controller managing overall operation
 2. **CommandHandler**: Processes user commands and executes appropriate actions
 3. **RoomManager**: Handles room administration and user management
-4. **MusicPlayer**: Manages music playback and playlist functionality
-5. **EventHandler**: Processes chat events and triggers responses
-6. **DRRRClient**: Handles communication with the DRRR chat server
+4. **EventHandler**: Processes chat events and triggers responses
+5. **DRRRClient**: Handles communication with the DRRR chat server
 
 ### Project Structure
 ```
@@ -44,7 +47,6 @@ DRRRBotAndroidApp/
 │   │   │   │   ├── DRRRBotCore.java     # Main bot controller
 │   │   │   │   ├── CommandHandler.java  # Command processing
 │   │   │   │   ├── RoomManager.java     # Room administration
-│   │   │   │   ├── MusicPlayer.java     # Music playback system
 │   │   │   │   ├── EventHandler.java    # Event processing
 │   │   │   │   ├── DRRRClient.java      # Server communication
 │   │   │   │   ├── BotService.java      # Background service
@@ -106,7 +108,8 @@ This repository uses GitHub Actions for automated building. Every push to the ma
 - `/unban <username>` - Unban a user
 - `/help` - Display help information
 
-#### Music Commands
+#### Music Commands (DEPRECATED)
+**WARNING**: All music-related commands are currently non-functional:
 - `/play <song_name> <url>` - Add a song to the playlist
 - `/netmusic <song_name>` - Search NetEase Music
 - `/qqmusic <song_name>` - Search QQ Music
@@ -122,7 +125,6 @@ The bot recognizes users with the tripcode "52Hertz" as administrators by defaul
 
 ### Room Settings
 - **Direct Messages**: Enable/disable DMs (default: enabled)
-- **Music System**: Enable/disable music playback (default: enabled)
 - **User Limits**: Set maximum room capacity (default: unlimited)
 
 ## Development
@@ -132,7 +134,6 @@ The bot follows a modular architecture with clearly separated concerns:
 - **Core Module**: Main bot logic and state management
 - **Command Module**: User command processing and execution
 - **Room Module**: Room administration and user management
-- **Music Module**: Music playback and playlist management
 - **Network Module**: Server communication and event handling
 
 ### Building with Android Studio
@@ -157,7 +158,7 @@ The bot follows a modular architecture with clearly separated concerns:
 ### Logs
 Application logs can be viewed using Android Debug Bridge (ADB):
 ```bash
-adb logcat -s DRRRBotCore CommandHandler RoomManager MusicPlayer
+adb logcat -s DRRRBotCore CommandHandler RoomManager
 ```
 
 ## License
