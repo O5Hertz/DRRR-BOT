@@ -62,7 +62,7 @@ This functionality was part of the original design but is no longer maintained o
 
 ### Project Structure
 ```
-DRRRBotAndroidApp/
+DRRR-BOT/
 ├── app/                           # Main application module
 │   ├── src/                       # Source code
 │   │   ├── main/                  # Main source set
@@ -106,7 +106,7 @@ DRRRBotAndroidApp/
    ant debug
    ```
 
-4. The built APK will be located at `bin/DRRRBotAndroidApp-debug.apk`
+4. The built APK will be located at `bin/DRRR-BOT-debug.apk`
 
 ### GitHub Actions
 This repository uses GitHub Actions for automated building. Every push to the main branch triggers a build workflow that:
