@@ -1,0 +1,57 @@
+name: Build Simple APK
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        cmdline-tools-version: 12.0
+        packages: |
+          platforms;android-30
+          build-tools;30.0.3
+      
+    - name: Build with Gradle
+      run: |
+        cd simple-android-app
+        # Create gradle wrapper files
+        echo "distributionUrl=https\://services.gradle.org/distributions/gradle-7.0.2-bin.zip" > gradle/wrapper/gradle-wrapper.properties
+        echo "distributionBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
+        echo "distributionPath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
+        echo "zipStoreBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
+        echo "zipStorePath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
+        
+        # Create gradlew script
+        cat > gradlew << 'EOF'
+#!/bin/sh
+APP_HOME=$(cd "$(dirname "$0")" && pwd)
+CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+java -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
+EOF
+        
+        chmod +x gradlew
+        
+        # Build debug APK
+        ./gradlew assembleDebug --stacktrace
+        
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: simple-app-debug
+        path: simple-android-app/app/build/outputs/apk/debug/app-debug.apk
