@@ -1,5 +1,5 @@
 {
-  "bot_dir": "/storage/emulated/0/壹号工作区/drrr_bot_standalone",
+  "bot_dir": "/path/to/drrr-bot",
   "bot_script": "enhanced_ai_bot.py",
   "nodes": [
     {
