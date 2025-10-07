@@ -9,25 +9,25 @@ This repository contains two versions of the DRRR Chat Room Bot:
 
 ### Overview
 
-The DRRR Chat Room Bot is an advanced Android application designed for the DRRR (Dollars Chat Room) platform. This bot provides automated chat responses, room management features, and event handling to enhance the chat room experience.
+The DRRR Chat Room Bot is an Android application designed for the DRRR (Dollars Chat Room) platform. This bot provides automated chat responses, room management features, and event handling.
 
-**IMPORTANT NOTICE**: This Android version is still in intensive testing phase as of 2025.10.7. No functionality is guaranteed to be fully operational or stable.
+**Notice**: This Android version is currently in testing phase as of 2025.10.7. Functionality may be limited and stability is not guaranteed.
 
 ### Features
 
 #### Core Functionality
-- **Automated Chat Responses**: Intelligent bot responses to user messages
-- **Room Management**: Comprehensive tools for room administration
-- **Event Handling**: Real-time event processing and response
+- **Automated Chat Responses**: Bot responses to user messages
+- **Room Management**: Tools for room administration
+- **Event Handling**: Event processing and response
 
 #### Administrative Features
 - **User Management**: Kick, ban, and unban users
 - **Access Control**: Admin-only command execution
-- **Whitelist/Blacklist**: Fine-grained user access control
+- **Whitelist/Blacklist**: User access control
 - **Room Settings**: Configurable room parameters
 
 #### AI Functionality
-**IMPORTANT**: The AI functionality uses a third-party API service from an external website, not an official API. This feature:
+The AI functionality uses a third-party API service from an external website, not an official API. This feature:
 - Relies on external API services for generating responses
 - May have usage limitations or costs associated with the third-party service
 - Is subject to the terms of service of the third-party API provider
@@ -36,16 +36,16 @@ The DRRR Chat Room Bot is an advanced Android application designed for the DRRR 
 Users should be aware that this functionality depends on external services and may not always be available or consistent.
 
 #### DRRR Chat Room Interaction
-**IMPORTANT**: The bot interacts with the DRRR chat room through web scraping techniques, not an official API. This approach:
+The bot interacts with the DRRR chat room through web scraping techniques, not an official API. This approach:
 - May be affected by changes to the DRRR website structure
-- Could potentially violate the terms of service of the DRRR chat room
+- May not comply with the terms of service of the DRRR chat room
 - May experience connectivity issues or blocking by the DRRR server
 - Requires maintaining session cookies and mimicking browser behavior
 
-Users should be aware of these limitations and potential risks when using this bot.
+Users should be aware of these limitations and potential issues when using this bot.
 
 #### Music System (DEPRECATED)
-**IMPORTANT**: The music playback system is currently non-functional and has been deprecated. The following features are not working:
+The music playback system is currently non-functional and has been deprecated. The following features are not working:
 - Playlist Management
 - Multiple Music Sources
 - Text-to-Speech
@@ -134,7 +134,7 @@ This repository uses GitHub Actions for automated building. Every push to the ma
 - `/help` - Display help information
 
 ##### Music Commands (DEPRECATED)
-**WARNING**: All music-related commands are currently non-functional:
+All music-related commands are currently non-functional:
 - `/play <song_name> <url>` - Add a song to the playlist
 - `/netmusic <song_name>` - Search NetEase Music
 - `/qqmusic <song_name>` - Search QQ Music
@@ -183,7 +183,7 @@ The bot follows a modular architecture with clearly separated concerns:
 5. **DRRR Connection Issues**: Verify DRRR website availability and cookie settings
 
 #### General Support
-Some features may have bugs or issues, or may not work at all. If you encounter such problems:
+Some features may have bugs or issues, or may not work as expected. If you encounter such problems:
 1. First, check your environment and configuration files
 2. If problems persist, please contact: ZX114516@outlook.com
 
@@ -206,19 +206,19 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ### Overview
 
-DRRR聊天室机器人是一个增强版AI机器人，具有用户欢迎、指令权限控制、AI对话和音乐点播功能。
+DRRR聊天室机器人是一个AI机器人，具有用户欢迎、指令权限控制、AI对话和音乐点播功能。
 
 ### Features
 
-- 增强版AI机器人，具有用户欢迎、指令权限控制、AI对话和音乐点播功能
-- 只有管理员"52Hertz"可以执行管理命令
+- AI机器人，具有用户欢迎、指令权限控制、AI对话和音乐点播功能
+- 管理员"52Hertz"可以执行管理命令
 - 支持AI对话功能，通过指定API进行智能对话
 - 音乐点播功能，支持添加、播放和管理音乐播放列表
-- 所有命令以"/"开头，便于识别和管理
-- 智能监控系统：自动监控机器人状态并进行智能决策
-- 维持矩阵系统：分布式高可用监控，确保机器人稳定运行
-- QQ音乐搜索：支持搜索QQ音乐并直接输出链接
-- 文本转语音：支持将文本转换为语音并直接输出链接
+- 所有命令以"/"开头
+- 智能监控系统：监控机器人状态并进行决策
+- 维持矩阵系统：分布式监控，确保机器人稳定运行
+- QQ音乐搜索：支持搜索QQ音乐并输出链接
+- 文本转语音：支持将文本转换为语音并输出链接
 
 ### Project Structure
 
