@@ -34,18 +34,84 @@ jobs:
       run: |
         echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
         echo "target=android-28" > project.properties
+        echo "out.dir=bin" > ant.properties
+        echo "source.dir=src" >> ant.properties
+        
+    - name: Update project with Android tools
+      run: |
+        # Create a dummy Android project to get the proper structure
+        echo "Creating Android project structure..."
+        mkdir -p temp_project
+        cd temp_project
+        echo "y" | sdkmanager "platforms;android-28" "build-tools;30.0.3"
+        echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
+        echo "target=android-28" > project.properties
+        cd ..
+        
+    - name: Prepare build environment
+      run: |
+        # Ensure the Android SDK build tools are in the PATH
+        export ANDROID_HOME=/usr/local/lib/android/sdk
+        export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+        
+        # Check if the required Android platform is installed
+        if [ ! -d "/usr/local/lib/android/sdk/platforms/android-28" ]; then
+          echo "Installing Android platform 28..."
+          echo "y" | sdkmanager "platforms;android-28"
+        fi
+        
+        # Check if build tools are installed
+        if [ ! -d "/usr/local/lib/android/sdk/build-tools/30.0.3" ]; then
+          echo "Installing build tools 30.0.3..."
+          echo "y" | sdkmanager "build-tools;30.0.3"
+        fi
         
     - name: Build with Ant
-      run: ant debug
+      run: |
+        # Set environment variables
+        export ANDROID_HOME=/usr/local/lib/android/sdk
+        export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+        
+        # Show current directory structure
+        echo "Current directory:"
+        pwd
+        echo "Directory contents:"
+        ls -la
+        
+        # Check if build.xml exists
+        if [ ! -f "android/build.xml" ]; then
+          echo "ERROR: build.xml not found in android directory"
+          exit 1
+        fi
+        
+        # Navigate to android directory and build
+        cd android
+        echo "Building in android directory..."
+        echo "Current directory contents:"
+        ls -la
+        
+        # Try to build with ant
+        ant debug || {
+          echo "Ant build failed, showing detailed error information..."
+          echo "Available ant targets:"
+          ant -p
+          echo "Trying to build with more verbose output..."
+          ant -verbose debug
+        }
       
     - name: Create output directory
       run: mkdir -p bin
       
     - name: Copy APK to output directory
-      run: cp bin/DRRRBotAndroidApp-debug.apk bin/ || echo "APK not found"
-      
+      run: |
+        cd android
+        echo "Looking for APK in bin directory..."
+        ls -la bin/ || echo "Bin directory contents:"
+        cp bin/DRRRBotAndroidApp-debug.apk ../bin/ || echo "APK not found, checking other possible locations..."
+        find . -name "*.apk" -type f || echo "No APK files found anywhere"
+        
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
-        path: bin/DRRRBotAndroidApp-debug.apk
+        path: android/bin/DRRRBotAndroidApp-debug.apk

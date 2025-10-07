@@ -112,9 +112,12 @@ DRRR-BOT/
 
 #### GitHub Actions
 This repository uses GitHub Actions for automated building. Every push to the main branch triggers a build workflow that:
-1. Sets up the required environment
-2. Builds the APK using Ant
-3. Uploads the built APK as an artifact
+1. Sets up the required environment (JDK 17, Android SDK, Ant)
+2. Configures the Android project with proper SDK paths
+3. Builds the APK using Ant
+4. Uploads the built APK as an artifact
+
+The build process may take several minutes to complete. If the build fails, check the GitHub Actions logs for detailed error information.
 
 ### Usage
 
