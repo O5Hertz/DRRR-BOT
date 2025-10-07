@@ -27,28 +27,27 @@ jobs:
           platforms;android-30
           build-tools;30.0.3
       
-    - name: Build with Gradle
+    - name: Create Gradle Wrapper
       run: |
         cd simple-android-app
-        # Create gradle wrapper files
-        echo "distributionUrl=https\://services.gradle.org/distributions/gradle-7.0.2-bin.zip" > gradle/wrapper/gradle-wrapper.properties
-        echo "distributionBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
+        mkdir -p gradle/wrapper
+        echo "distributionBase=GRADLE_USER_HOME" > gradle/wrapper/gradle-wrapper.properties
         echo "distributionPath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
+        echo "distributionUrl=https\://services.gradle.org/distributions/gradle-7.0.2-bin.zip" >> gradle/wrapper/gradle-wrapper.properties
         echo "zipStoreBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
         echo "zipStorePath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
         
-        # Create gradlew script
-        cat > gradlew << 'EOF'
-#!/bin/sh
-APP_HOME=$(cd "$(dirname "$0")" && pwd)
-CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
-java -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
-EOF
-        
+    - name: Make gradlew executable
+      run: |
+        cd simple-android-app
+        touch gradlew
         chmod +x gradlew
         
-        # Build debug APK
-        ./gradlew assembleDebug --stacktrace
+    - name: Build with Gradle
+      run: |
+        cd simple-android-app
+        # Use the system gradle instead of wrapper
+        gradle assembleDebug --stacktrace
         
     - name: Upload APK
       uses: actions/upload-artifact@v4

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Simple gradlew script for Android project
+
+# Set the path to the Gradle wrapper jar
+GRADLE_WRAPPER_JAR="gradle/wrapper/gradle-wrapper.jar"
+
+# Check if the Gradle wrapper jar exists
+if [ ! -f "$GRADLE_WRAPPER_JAR" ]; then
+    echo "Gradle wrapper jar not found: $GRADLE_WRAPPER_JAR"
+    echo "Please run this script from the project root directory"
+    exit 1
+fi
+
+# Run Gradle with the wrapper
+java -classpath "$GRADLE_WRAPPER_JAR" org.gradle.wrapper.GradleWrapperMain "$@"
