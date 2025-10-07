@@ -33,7 +33,11 @@ jobs:
     - name: Set up Android project
       run: |
         echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
-        /usr/local/lib/android/sdk/tools/bin/android update project --path . --target android-28
+        /usr/local/lib/android/sdk/cmdline-tools/12.0/bin/avdmanager list target
+      
+    - name: Create Android project
+      run: |
+        /usr/local/lib/android/sdk/tools/bin/android create project --name DRRRBotAndroidApp --target android-28 --path . --package com.drrr.bot --activity MainActivity
       
     - name: Build with Ant
       run: ant debug
